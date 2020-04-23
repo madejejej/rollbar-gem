@@ -583,7 +583,7 @@ module Rollbar
       request.body = pack_ruby260_bytes(body)
       request.add_field('X-Rollbar-Access-Token', access_token)
 
-      handle_net_retries { http.request(request) }
+      handle_net_retries { raise Net::ReadTimeout }
     end
 
     def pack_ruby260_bytes(body)
